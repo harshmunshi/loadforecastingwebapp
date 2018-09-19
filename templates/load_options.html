@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask Highcharts Live Data Demo</title>
 
-          <!-- Bootstrap -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
   </head>
 
 
@@ -48,11 +43,16 @@
 
     <div class="container">	
      <h2>Select an Option</h2>
-      <form method="post" action="/">
-	<input type="submit" value="load_data" name="load_data"/>
+      <form method="post" action="/load_options">
+	<!--input type="submit" value="load_data" name="load_data"/>
 	<input type="submit" value="load_weather" name="load_weather"/>
 	<input type="submit" value="train" name="train"/>
-	<input type="submit" value="forecast" name="forecast"/>	
+	<button id="forecast" type="button">forecast</button>
+	<input type="submit" value="forecast" name="forecast"/-->
+	<input type="submit" name="submit" value="load_data">
+	<input type="submit" name="submit" value="load_weather">
+	<input type="submit" name="submit" value="train">
+	<input type="submit" name="submit" value="forecast">
       </form>
     </div>
   </body>

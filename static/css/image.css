@@ -1,0 +1,12 @@
+#content {
+    position: relative;
+}
+#content img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+<div id="content">
+    <img src="../../images/image.png" class="ribbon"/>
+</div>

@@ -5,7 +5,7 @@ applications:
 - name: drootoo_load_forecast
   buildpack: python_buildpack
   memory: 512M
-  command: python app.py nohup.out
+  stack: cflinuxfs2
 
   #env:
   #  node_env: cloud

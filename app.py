@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, request
+import os
 
 app = Flask(__name__)
 
+port = int(os.getenv("PORT", 3000))
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -33,13 +35,13 @@ def load_options():
 	return render_template('load_options.html', error=error)
 	
 @app.route('/forecast')
-def index(chartID = 'chart_ID', chart_type = 'spline', chart_width = 600, chart_height = 450):
-	act, pred = compute_data('output_load_forecasting_result.txt')
-	t_data = compute_data_single('rc15.txt')
-	rain = compute_data_single('rain.txt')
-	temp = compute_data_single('temp.txt')
-	chart = {"renderTo": chartID, "type": chart_type, "height": chart_height,}
-	series = [{"name": 'Predicted', "data": pred}, {"name": 'Actual', "data": act}, {"name": "Rain", "data" : rain}, 
+def index(chartID = 'chart_ID', chart_type = 'spline', chart_width = 1200, chart_height = 450):
+	act, pred = compute_data('./data/output_load_forecasting_result.txt')
+	t_data = compute_data_single('./data/rc15.txt')
+	rain = compute_data_single('./data/rain.txt')
+	temp = compute_data_single('./data/temp.txt')
+	chart = {"renderTo": chartID, "type": chart_type, "height": chart_height, "width": chart_width,}
+	series = [{"name": 'Predicted', "data": pred}, {"name": 'Actual', "data": act}, {"name": "Rain", "data" : []}, 
 		   {"name": "Training Data", "data": t_data}, {"name": "Temp", "data": temp}]
 	title = {"text": 'Load Forecasting'}
 	xAxis = {"title": {"text": 'Time'}}
@@ -69,4 +71,4 @@ def compute_data_single(f_name):
 
 	return all_vals
 if __name__ == "__main__":
-	app.run(debug = True, host='0.0.0.0', port=8080)#, passthrough_errors=True)
+	app.run(debug = True, host='0.0.0.0', port=port)#, passthrough_errors=True)
