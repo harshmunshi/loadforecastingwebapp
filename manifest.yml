@@ -1,0 +1,14 @@
+# custom drootoo deploy script
+
+---
+applications:
+- name: drootoo_load_forecast
+  buildpack: python_buildpack
+  memory: 512M
+  command: python app.py nohup.out
+
+  #env:
+  #  node_env: cloud
+  #  clientID: app_client_id
+  #  clientSecret: secret
+
